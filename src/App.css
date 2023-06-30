@@ -77,6 +77,8 @@ main {
   height: 100%;
   bottom: 0;
   animation: rollout 0.4s;
+  -webkit-animation-name: rollout;
+  -webkit-animation-duration: 0.4s;
 }
 
 .left-circle, .right-circle {
@@ -111,6 +113,8 @@ main {
   z-index: 1;
   background: hsl(236, 21%, 26%);
   animation: rolloutTop 0.4s;
+  -webkit-animation-name: rolloutTop;
+  -webkit-animation-duration: 0.4s;
   box-shadow: 0 0.625rem hsl(234, 17%, 12%);
   
 }
@@ -148,7 +152,7 @@ main {
 }
 
 
-@keyframes rollout {
+@-webkit-keyframes rollout {
   0%{
     opacity: 1;
   }
@@ -157,13 +161,15 @@ main {
   }
 }
 
-@keyframes rolloutTop {
+@-webkit-keyframes rolloutTop {
   0% { 
     transform: rotateX(0.5turn); 
+    -webkit-transform: rotateX(0.5turn);
   }
   100% {
     opacity: 1;
     transform: rotateX(1turn); 
+    -webkit-transform: rotateX(1turn); 
     box-shadow: 0 0.625rem hsl(234, 17%, 12%);
   }
 } 
