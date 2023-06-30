@@ -9,6 +9,7 @@ body {
   min-height: 100vh;
   background: url('/images/bg-stars.svg'), url('/images/pattern-hills.svg'), linear-gradient(hsl(235, 16%, 14%), hsl(235, 16%, 14%)) ;
   background-repeat: repeat, no-repeat;
+  background-size: auto, 100% auto;
   background-position: center center, bottom;
 }
 
@@ -20,9 +21,9 @@ body {
 }
 
 main {
+  width: 56.25rem;
   margin-top: 20vh;
   height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,16 +39,18 @@ main {
 }
 
 .timer {
-  display: flex;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
-  gap: 20px;
+  gap: 1.25rem;
   margin-bottom: 20vh;
 }
 
 .flip-card-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: center;
 }
 
@@ -59,41 +62,40 @@ main {
 }
 
 .flip-card {
-  width: 200px;
-  height: 200px;
+  width: 12.5rem;
+  height: 12.5rem;
   display: flex;
   position: relative;
-  overflow: hidden;
-  background: hsl(236, 21%, 26%);;
-  border-radius: 5px;
-  box-shadow: 0 10px hsl(234, 17%, 12%);
+  border-radius: 0.313rem;
+ 
 }
 
 .card {
-  border-radius: 5px;
+  border-radius: 0.313rem;
   position: absolute;
   width: 100%;
   height: 100%;
   bottom: 0;
-  background: hsl(236, 21%, 26%);
+  animation: rollout 0.4s;
 }
 
 .left-circle, .right-circle {
   z-index: 3;
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 50%;
   background-color: black;
   top: 50%;
- 
 }
 
 .left-circle {
+  clip-path: inset(0 0 0 50%);
   transform: translate(-50%, -50%);
 }
 
 .right-circle {
+  clip-path: inset(0 50% 0 0 );
   right: 0;
   transform: translate(50%, -50%);
 }
@@ -107,6 +109,10 @@ main {
   align-items: center;
   font-size: 5rem;
   z-index: 1;
+  background: hsl(236, 21%, 26%);
+  animation: rolloutTop 0.4s;
+  box-shadow: 0 0.625rem hsl(234, 17%, 12%);
+  
 }
 
 .flip-card-text::before {
@@ -116,11 +122,13 @@ main {
   height: 50%;
   top:0;
   background: hsla(234, 17%, 12%, 0.3);
+  
 }
+
 
 .social {
   display: flex;
-  gap: 30px;
+  gap: 1.875rem;
 }
 
 .social-icon {
@@ -133,98 +141,68 @@ main {
 }
 
 .attribution, .attribution a {
+  width: 100%;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 10vh;
   color: hsl(237, 18%, 59%);
 }
 
+
 @keyframes rollout {
+  0%{
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rolloutTop {
   0% { 
-    backdrop-filter: opacity(1);
-    transform: rotateX(180deg); 
-  }
-  10% {
-    box-shadow: 0 30px 10px black; 
-  }
-  50% { 
-    /* z-index: 2; */
-    backdrop-filter: opacity(0.5);
-    transform: rotateX(90deg);
-    box-shadow: 0 30px 10px black; 
-  }
-  100% { 
-    /* z-index: 0; */
-    transform: none; 
-    box-shadow: 0 30px 10px black;
-  }
-}
-
-.card {
-  animation: rollout 0.4s;
-}
-
-@keyframes flipTop {
-  0% {
-    transform: rotateX(0deg);
-    z-index: 2;
-  }
-  0%, 99% {
-    opacity: 0.99;
+    transform: rotateX(0.5turn); 
   }
   100% {
-    transform: rotateX(-90deg);
-    opacity: 0;
+    opacity: 1;
+    transform: rotateX(1turn); 
+    box-shadow: 0 0.625rem hsl(234, 17%, 12%);
   }
-}
+} 
 
-@keyframes flipBottom {
-  0%, 50% {
-    z-index: -1;
-    transform: rotateX(90deg);
-    opacity: 0;
-  }
-  51% {
-    opacity: 0.99;
-  }
-  100% {
-    opacity: 0.99;
-    transform: rotateX(0deg);
-    z-index: 5;
-  }
-}
 
-@media screen  and (max-width: 950px) {
+
+@media screen  and (max-width: 60rem) {
   main {
-    padding-inline: 20px;
-    margin-top: 10vh;
+    width: 100%;
+    padding-inline: 1.25rem;
   }
-
   .page-title {
     text-align: center;
     font-size: 1.5rem;
   }
 
-  .timer {
-    width: 100%;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 40vh;
-  }
   .flip-card {
-    width: 70px;
-    height: 70px;
+    width: 100%;
+    height: auto;
+    padding-top: 100%;
   }
 
   .flip-card-text {
-    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 3.125rem;
+    font-size: 12vw;
   }
 
   .left-circle, .right-circle {
-    height: 5px;
-    width: 5px;
+    height: 0.313rem;
+    width: 0.313rem;
   }
 
-  .flip-card-title {
+  .flip-card-title, .attribution, .attribution a {
     font-size: 0.5rem;
+    font-size: 2.5vw;
   }
+
+
 }

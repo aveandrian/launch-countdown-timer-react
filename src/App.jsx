@@ -4,13 +4,11 @@ import {useCountdown} from './hooks/useCoundown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookSquare, faPinterest, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
-const THREE_DAYS_IN_MS = 14 * 24 * 60 * 60 * 1000;
-const NOW_IN_MS = new Date().getTime();
-const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
+const fourteenDays = 14 * 24 * 60 * 60 * 1000;
+const now = new Date().getTime();
+const targetDate = now + fourteenDays;
 function App() {
-  
-  const [days, hours, minutes, seconds] = useCountdown(dateTimeAfterThreeDays)
-  
+  const [days, hours, minutes, seconds] = useCountdown(targetDate)
 
   return (
     <main>
