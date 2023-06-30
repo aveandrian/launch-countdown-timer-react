@@ -20,4 +20,4 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![image](https://github.com/aveandrian/launch-countdown-timer-react/assets/13519212/1279f314-725c-4c5f-9a77-58f28ac41d57)
